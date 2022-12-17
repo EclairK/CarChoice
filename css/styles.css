@@ -1,0 +1,30 @@
+
+#parent {
+    display:flex;
+}
+
+aside {
+    width: 20%;
+    flex-grow: 1;
+    background-color: lightgreen;
+}
+
+article {
+    width: 70%;
+    flex-grow: 2;
+    background-color: lightblue;
+}
+
+img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover; /* この一行を追加するだけ！ */
+  }
+.grid {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 1px;
+    margin-bottom: 50px;
+}
+
