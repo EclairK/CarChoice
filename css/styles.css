@@ -1,6 +1,7 @@
 
 #parent {
     display:flex;
+    background-color: rgb(255, 255, 255);
 }
 
 aside {
@@ -11,13 +12,12 @@ aside {
 content {
     width: 30%;
     flex-grow: 2;
-    background-color: rgb(221, 173, 230);
+   
 }
 
 article {
     width: 30%;
     flex-grow: 3;
-    background-color: lightblue;
 }
 
 img {
