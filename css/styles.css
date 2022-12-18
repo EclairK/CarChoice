@@ -8,10 +8,15 @@ aside {
     flex-grow: 1;
     background-color: lightgreen;
 }
+content {
+    width: 30%;
+    flex-grow: 2;
+    background-color: rgb(221, 173, 230);
+}
 
 article {
-    width: 70%;
-    flex-grow: 2;
+    width: 30%;
+    flex-grow: 3;
     background-color: lightblue;
 }
 

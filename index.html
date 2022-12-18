@@ -6,8 +6,10 @@
         <meta name="description" content="種々の車を検討します">
 
     <!--CSS-->
-        <link href="https://fonts.googleapis.com/css?family=philosopher" rel="stylesheet">
+        <!--link href="https://fonts.googleapis.com/css?family=philosopher" rel="stylesheet"-->
         <link href="css/styles.css" rel="stylesheet">
+        <script src="echarts.min.js"></script>
+        <script src="echarts.js"></script>
         <!--link rel="icon" type="image/png" href="images/favicon.png"-->
         
     </head>
@@ -23,7 +25,7 @@
                 <img id="GR86" src="images/GR86.png" alt="GR86">
                 </div>
                 <div class="car-image">
-                    <img id="crown" src="images/crown.png" alt="crown">
+                    <img id="Crown" src="images/crown.png" alt="Crown">
                 </div>
                 <div class="car-image">
                 <img id="Camry" src="images/Camry.png" alt="Camry">
@@ -71,11 +73,18 @@
                 <img id="Yaris" src="images/Yaris.png" alt="Yaris">
                 </div>
             </aside>
+            <content>
+                <p>棒グラフエリア</p>
+                <div id="main1" style="width: 600px;height: 400px;"></div>
+            </content>
             <article>
-                <p>グラフや金額を表示するエリア</p>
-                <p>できたら無茶苦茶良いよね</p>
+                <p>レーダーチャートを表示するエリア</p>
+                <div id="main2" style="width: 600px;height: 400px;"></div>
+                <script  src="src/index.js" type="module"></script>
             </article>
-
+           
+      
         </div>
+
 
 </html>
