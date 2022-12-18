@@ -38,6 +38,26 @@ var RAV4 = new Car("RAV4", 359, 7, 2.5, 2, 0);
 var roomy = new Car("roomy", 193, 5, 1.0, 2, 0);
 var RX = new Car("RX", 651, 7, 3.5, 2, 0);
 
+var cars = {
+  "Aqua":Aqua,
+  "Yaris":Yaris,
+  "Camry":Camry,
+  "Crown":Crown,
+  "GR86":GR86,
+  "GRSupra":GRSupra,
+  "GRYaris":GRYaris,
+  "Harrier":Harrier,
+  "Is":Is,
+  "Macan":Macan,
+  "MINI":MINI,
+  "Model3":Model3,
+  "ModelY":ModelY,
+  "Rangerover":Rangerover,
+  "RAV4":RAV4,
+  "roomy":roomy,
+  "RX":RX
+}
+
 namedata.push(
   Aqua.name,
   Yaris.name,
@@ -101,40 +121,102 @@ option1 = {
 
 };
 
-option2 = {
-  title: {
-    text: "Basic Radar Chart",
-  },
-  legend: {
-    data: ["Allocated Budget", "Actual Spending"],
-  },
-  radar: {
-    // shape: 'circle',
-    indicator: [
-      { name: "金額", max: 1000 },
-      { name: "定員", max: 8 },
-      { name: "排気量", max: 8 },
-      { name: "欲しい度：俺", max: 5 },
-      { name: "欲しい度：理", max: 5 },
-    ],
-  },
-  series: [
-    {
-      name: "Budget vs spending",
-      type: "radar",
-      data: [
-        {
-          value: [4200, 3000, 20000, 35000, 50000, 18000],
-          name: "Allocated Budget",
-        },
-        {
-          value: [5000, 14000, 28000, 26000, 42000, 21000],
-          name: "Actual Spending",
-        },
-      ],
-    },
-  ],
-};
+var value1 = [
+    Yaris.value,
+    Yaris.person,
+    Yaris.displacement,
+    Yaris.wantK,
+    Yaris.wantR
+]
+
+var value2 = [
+    GRSupra.value,
+    GRSupra.person,
+    GRSupra.displacement,
+    GRSupra.wantK,
+    GRSupra.wantR
+]
+
 
 option1 && myChart1.setOption(option1);
-option2 && myChart2.setOption(option2);
+
+
+var select1;
+var select2;
+var count = 0;
+function clickListener (e) {
+    /*クリックした要素のIDを表示*/
+
+    if (count == 0){
+    
+    document.getElementById('select1').textContent = "1台目: " + e.target.getAttribute("id");
+    select1 = cars[e.target.getAttribute("id")]
+    count +=1;
+    }
+    else{
+    
+    document.getElementById('select2').textContent = "2台目: " +  e.target.getAttribute("id");
+    select2 = cars[e.target.getAttribute("id")]
+    count =0;
+    option2 = setOption(select1,select2);
+    option2 && myChart2.setOption(option2);
+    }
+  }
+  /*②IMG要素を全てセレクト*/
+  document.querySelectorAll("img").forEach((imgElm) => {
+    /*③要素のクリックイベントにイベントリスナーを紐づける*/
+    imgElm.addEventListener('click', clickListener);
+  })
+
+  function setOption (car1,car2) {
+    var value1 = [
+        car1.value,
+        car1.person,
+        car1.displacement,
+        car1.wantK,
+        car1.wantR
+    ]
+    var value2 = [
+        car2.value,
+        car2.person,
+        car2.displacement,
+        car2.wantK,
+        car2.wantR
+    ]
+
+    var option = {
+        title: {
+          text: "Basic Radar Chart",
+        },
+        legend: {
+          data: [car1.name, car2.name],
+        },
+        radar: {
+          // shape: 'circle',
+          indicator: [
+            { name: "金額", max: 1000 },
+            { name: "定員", max: 8 },
+            { name: "排気量", max: 8 },
+            { name: "欲しい度：俺", max: 5 },
+            { name: "欲しい度：理", max: 5 },
+          ],
+        },
+        series: [
+          {
+            name: car1.name + " vs " + car2.name,
+            type: "radar",
+            data: [
+              {
+                value: value1,
+                name: car1.name,
+              },
+              {
+                value: value2,
+                name: car2.name,
+              },
+            ],
+          },
+        ],
+      };
+      return option
+  }
